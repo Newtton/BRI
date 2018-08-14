@@ -44,12 +44,13 @@ public class ResultActivity extends AppCompatActivity {
         int score= b.getInt("score");
         int totalQs= b.getInt("totalQs");
         myAnsList=b.getStringArrayList("myAnsList");
+        double scr = ((double)score/totalQs*100);
 
         //display score
 //        bar.setRating(score);
 
         tvAnsweredInfo.setText("You have answered "+score+" of "+totalQs+" questions  correctly!");
-        t.setText("Your Score : "+ score*3);
+        t.setText("Your Score : "+ scr);
 //        float percentage=(score*100)/totalQs;
 //
 //        if (percentage>=80 && percentage<=100){
@@ -71,7 +72,7 @@ public class ResultActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finish()    ;
             }
         });
 

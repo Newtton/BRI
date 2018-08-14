@@ -13,10 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ishaqfakhrozi.projectbri.DB.DBAdapter;
+import com.example.ishaqfakhrozi.projectbri.MainActivity;
 import com.example.ishaqfakhrozi.projectbri.R;
 import com.example.ishaqfakhrozi.projectbri.model.Question;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,7 +37,8 @@ public class QuestionFragment extends Fragment {
 
     private TextView txtQuestion,tvNoOfQs;
     private RadioButton rbtnA, rbtnB, rbtnC,rbtnD;
-
+    private static MainActivity parentActivity;
+    static RadioGroup grp;
 
 
     ArrayList<String> myAnsList;
@@ -122,6 +125,20 @@ public class QuestionFragment extends Fragment {
 //        }
 //    }
 //});
+public static boolean setJawaban(){
+    HashMap<String,Object> hashMap = parentActivity.getHashMap();
+    int radiobuttonID = grp.getCheckedRadioButtonId();
+    View radioButton = grp.findViewById(radiobuttonID);
+    int idx = grp.indexOfChild(radioButton);
+    RadioButton r = (RadioButton) grp.getChildAt(idx);
+    hashMap.put("answer", r.getText().toString());
+    hashMap.put("answer1", r.getText().toString());
+    hashMap.put("answer2", r.getText().toString());
+    hashMap.put("answer3", r.getText().toString());
+    hashMap.put("answer4", r.getText().toString());
+
+    return true;
+}
 
 
 }

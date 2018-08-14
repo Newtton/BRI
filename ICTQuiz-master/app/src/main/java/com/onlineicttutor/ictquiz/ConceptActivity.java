@@ -66,22 +66,13 @@ public class ConceptActivity extends AppCompatActivity {
                         Log.e("comments", "Wrong Answer");
                     }
                     if(questionId<dbAdapter.rowCount()){
-                        questionId++;
                         currentQuestion=questionsList.get(questionId);
+
                         setPertanyaan();
                         grp.clearCheck();
                     }else{
-                        Intent intent = new Intent(ConceptActivity.this, ResultActivity.class);
-
-                        Bundle b = new Bundle();
-                        b.putInt("score", obtainedScore);
-                        b.putInt("totalQs", questionsList.size());
-                        b.putStringArrayList("myAnsList", myAnsList);
-                        intent.putExtras(b);
-                        startActivity(intent);
-
+                        savenilai();
                     }
-
             }
         });
 
@@ -113,6 +104,7 @@ public class ConceptActivity extends AppCompatActivity {
         btnBack= (Button)findViewById(R.id.btnBack);
 
         myAnsList = new ArrayList<String>();
+
     }
 
 
@@ -132,6 +124,17 @@ public class ConceptActivity extends AppCompatActivity {
         rbtnC.setText(currentQuestion.getOptionC());
         rbtnD.setText(currentQuestion.getOptionD());
 
+        questionId++;
+    }
+    public void savenilai(){
+        Intent intent = new Intent(ConceptActivity.this, ResultActivity.class);
 
+        Bundle b = new Bundle();
+        b.putInt("score", obtainedScore);
+        b.putInt("totalQs", questionsList.size());
+        b.putStringArrayList("myAnsList", myAnsList);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
     }
 }
