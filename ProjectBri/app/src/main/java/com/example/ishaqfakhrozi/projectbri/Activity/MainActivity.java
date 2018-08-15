@@ -1,4 +1,4 @@
-package com.example.ishaqfakhrozi.projectbri;
+package com.example.ishaqfakhrozi.projectbri.Activity;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.ishaqfakhrozi.projectbri.DB.DBAdapter;
 import com.example.ishaqfakhrozi.projectbri.Fragment.QuestionFragment;
+import com.example.ishaqfakhrozi.projectbri.R;
+import com.example.ishaqfakhrozi.projectbri.model.Question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +42,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_main);
 
 
+
         viewPager = findViewById(R.id.view_pager);
         setupViewPager(viewPager);
 
@@ -59,16 +64,16 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         questionFragment8 = QuestionFragment.newInstance(String.valueOf(7));
         questionFragment9 = QuestionFragment.newInstance(String.valueOf(8));
         questionFragment10 = QuestionFragment.newInstance(String.valueOf(9));
-        adapter.addFrag(questionFragment1, "Question1");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(1)), "Question2");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(2)), "Question3");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(3)), "Question4");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(4)), "Question5");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(5)), "Question6");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(6)), "Question7");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(7)), "Question8");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(8)), "Question9");
-        adapter.addFrag(QuestionFragment.newInstance(String.valueOf(9)), "Question10");
+        adapter.addFrag(questionFragment1, "1");
+        adapter.addFrag(questionFragment2, "2");
+        adapter.addFrag(questionFragment3, "3");
+        adapter.addFrag(questionFragment4, "4");
+        adapter.addFrag(questionFragment5, "5");
+        adapter.addFrag(questionFragment6, "6");
+        adapter.addFrag(questionFragment7, "7");
+        adapter.addFrag(questionFragment8, "8");
+        adapter.addFrag(questionFragment9, "9");
+        adapter.addFrag(questionFragment10, "10");
         viewPager.setOffscreenPageLimit(adapter.getCount());
         viewPager.setAdapter(adapter);
     }

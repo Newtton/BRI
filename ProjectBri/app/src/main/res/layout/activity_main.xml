@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <com.example.ishaqfakhrozi.projectbri.Helper.CustomViewPager
         android:id="@+id/view_pager"
@@ -37,5 +37,13 @@
         android:paddingRight="6dp"
         android:text="Kembali Ke soal Sebelumnya"
         android:textColor="#ffffff" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvtotalSoal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:text="TextView" />-->
 
 </RelativeLayout>
