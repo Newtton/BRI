@@ -19,17 +19,17 @@
         android:layout_marginTop="10dp"
         android:padding="10dp">
 
-        <!--<TextView-->
-            <!--android:id="@+id/tvNumberOfQuestions"-->
-            <!--android:layout_width="69dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:text="angka"-->
-            <!--android:textAlignment="center"-->
-            <!--android:textColor="#d2d2d2"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textStyle="bold" />-->
+        <TextView
+            android:id="@+id/tvNumberOfQuestions"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="angka"
+            android:textAlignment="center"
+            android:textColor="#d2d2d2"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvQuestion"

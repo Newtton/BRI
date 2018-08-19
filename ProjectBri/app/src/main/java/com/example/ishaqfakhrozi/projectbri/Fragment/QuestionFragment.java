@@ -1,8 +1,11 @@
 package com.example.ishaqfakhrozi.projectbri.Fragment;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,19 +27,20 @@ import java.util.List;
  * Use the {@link QuestionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class QuestionFragment extends Fragment {
+public class QuestionFragment extends Fragment  {
     private static final String ARG_QUESTION_ID = "question_id";
     private List<Question> questionsList;
     private Question currentQuestion;
     private int obtainedScore=0;
     private int questionId=0;
 
+
+
     private int answeredQsNo=0;
 
-    private TextView txtQuestion,tvNoOfQs;
+    private TextView txtQuestion,tvNumberOfQuestions;
     private RadioButton rbtnA, rbtnB, rbtnC,rbtnD;
-    private static MainActivity parentActivity;
-    static RadioGroup grp;
+    OnRadioGroupSelectedListener mCallback;
 
 
     ArrayList<String> myAnsList;
@@ -71,7 +75,7 @@ public class QuestionFragment extends Fragment {
         questionsList = dbAdapter.getAllQuestions();
         currentQuestion = questionsList.get(Integer.parseInt(question1));
         View view = inflater.inflate(R.layout.fragment_question, container, false);
-        final RadioGroup grp=view.findViewById(R.id.radioGroup1);
+        final RadioGroup answer=view.findViewById(R.id.radioGroup1);
 
         txtQuestion=view.findViewById(R.id.tvQuestion);
         rbtnA=view.findViewById(R.id.radio0);
@@ -79,12 +83,38 @@ public class QuestionFragment extends Fragment {
         rbtnC=view.findViewById(R.id.radio2);
         rbtnD=view.findViewById(R.id.radio3);
         setPertanyaan();
+        answer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+                if (currentQuestion.getANSWER().equals(answer)) {
+                    obtainedScore++;
+                    if (checkedId == R.id.radio0) {
+                        mCallback.onButtonSelected(0);
+                    } else if (checkedId == R.id.radio1) {
+                        mCallback.onButtonSelected(1);
 
-        myAnsList = new ArrayList<String>();
+                    } else if (checkedId == R.id.radio2) {
+                        mCallback.onButtonSelected(2);
+
+                    } else if (checkedId == R.id.radio3) {
+                        mCallback.onButtonSelected(3);
+
+                    }
+
+                }else{
+                    Log.e("comments", "Wrong Answer");
+                }
+            }
+        });
         return view;
     }
     private void setPertanyaan()
     {
+        rbtnA.setChecked(false);
+        rbtnB.setChecked(false);
+        rbtnC.setChecked(false);
+        rbtnD.setChecked(false);
 
 //        answeredQsNo=questionId+1;
 //        tvNoOfQs.setText(+answeredQsNo+"/"+questionsList.size());
@@ -96,16 +126,30 @@ public class QuestionFragment extends Fragment {
         rbtnD.setText(currentQuestion.getOptionD());
     }
 
-    public static boolean setJawaban(){
-        HashMap<String,Object> hashMap = parentActivity.getHashMap();
-        int radiobuttonID = grp.getCheckedRadioButtonId();
-        View radioButton = grp.findViewById(radiobuttonID);
-        int idx = grp.indexOfChild(radioButton);
-        RadioButton r = (RadioButton) grp.getChildAt(idx);
-        hashMap.put("answer", r.getText().toString());
+    public static void setJawaban(){
 
-        return true;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Activity activity;
 
+        if (context instanceof Activity) {
+            activity = (Activity) context;
+
+            try {
+                mCallback = (OnRadioGroupSelectedListener) activity;
+            } catch (ClassCastException e) {
+                throw new ClassCastException(activity.toString()
+                        + " must implement OnRadioGroupSelectedListener");
+            }
+        }
+
+    }
+
+    public interface OnRadioGroupSelectedListener {
+        public void onButtonSelected(int position);
+
+    }
 }

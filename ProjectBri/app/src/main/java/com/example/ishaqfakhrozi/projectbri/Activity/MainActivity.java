@@ -1,5 +1,7 @@
 package com.example.ishaqfakhrozi.projectbri.Activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,8 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.ishaqfakhrozi.projectbri.DB.DBAdapter;
@@ -20,10 +25,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class    MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class    MainActivity extends AppCompatActivity implements View.OnClickListener, QuestionFragment.OnRadioGroupSelectedListener {
     private int mfragmentIndex=0;
     private ViewPager viewPager;
     private Button back,next;
+    private Question currentQuestion;
     private HashMap<String,Object> hashMap;
     private QuestionFragment questionFragment1;
     private QuestionFragment questionFragment2;
@@ -35,6 +41,8 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     private QuestionFragment questionFragment8;
     private QuestionFragment questionFragment9;
     private QuestionFragment questionFragment10;
+    QuestionFragment.OnRadioGroupSelectedListener mCallback;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,16 +94,19 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
 
 
         }else if(view == next) {
-            Boolean next = questionFragment1.setJawaban();
-            if (next != null){
                 mfragmentIndex++;
                 viewPager.setCurrentItem(mfragmentIndex);
-            }
 
         }
     }
+
     public HashMap<String,Object> getHashMap(){
         return this.hashMap;
+    }
+
+    @Override
+    public void onButtonSelected(int mfragmentIndex) {
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter{
@@ -126,5 +137,9 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
             return super.getPageTitle(position);
         }
     }
+
+
+
+
 
 }
