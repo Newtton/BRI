@@ -30,6 +30,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
     private ViewPager viewPager;
     private Button back,next;
     private Question currentQuestion;
+    private int obtainedScore=0;
     private HashMap<String,Object> hashMap;
     private QuestionFragment questionFragment1;
     private QuestionFragment questionFragment2;
@@ -50,7 +51,6 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_main);
 
 
-
         viewPager = findViewById(R.id.view_pager);
         setupViewPager(viewPager);
 
@@ -58,6 +58,7 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         next = findViewById(R.id.btnNext);
         back.setOnClickListener(this);
         next.setOnClickListener(this);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -100,13 +101,19 @@ public class    MainActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+
     public HashMap<String,Object> getHashMap(){
         return this.hashMap;
     }
 
     @Override
     public void onButtonSelected(int mfragmentIndex) {
-
+//        if (mCallback.equals(mfragmentIndex)){
+//            obtainedScore++;
+//        }
+//        else{
+//            Log.d("message","ga ada data");
+//        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter{

@@ -74,23 +74,29 @@ public class QuestionFragment extends Fragment  {
         final DBAdapter dbAdapter = new DBAdapter(getContext());
         questionsList = dbAdapter.getAllQuestions();
         currentQuestion = questionsList.get(Integer.parseInt(question1));
-        View view = inflater.inflate(R.layout.fragment_question, container, false);
-        final RadioGroup answer=view.findViewById(R.id.radioGroup1);
 
+        View view = inflater.inflate(R.layout.fragment_question, container, false);
+        final RadioGroup grp=view.findViewById(R.id.radioGroup1);
+
+//        tvNumberOfQuestions = view.findViewById(R.id.tvNumberOfQuestions);
         txtQuestion=view.findViewById(R.id.tvQuestion);
         rbtnA=view.findViewById(R.id.radio0);
         rbtnB=view.findViewById(R.id.radio1);
         rbtnC=view.findViewById(R.id.radio2);
         rbtnD=view.findViewById(R.id.radio3);
+
+
+        final RadioButton answer=(RadioButton)view.findViewById(grp.getCheckedRadioButtonId());
+        //set Question dan check RadioGruop
         setPertanyaan();
-        answer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // checkedId is the RadioButton selected
-                if (currentQuestion.getANSWER().equals(answer)) {
-                    obtainedScore++;
+                    
                     if (checkedId == R.id.radio0) {
                         mCallback.onButtonSelected(0);
+
                     } else if (checkedId == R.id.radio1) {
                         mCallback.onButtonSelected(1);
 
@@ -101,23 +107,20 @@ public class QuestionFragment extends Fragment  {
                         mCallback.onButtonSelected(3);
 
                     }
-
-                }else{
-                    Log.e("comments", "Wrong Answer");
-                }
             }
         });
+
+
         return view;
     }
     private void setPertanyaan()
     {
-        rbtnA.setChecked(false);
-        rbtnB.setChecked(false);
-        rbtnC.setChecked(false);
-        rbtnD.setChecked(false);
+//        rbtnA.setChecked(false);
+//        rbtnB.setChecked(false);
+//        rbtnC.setChecked(false);
+//        rbtnD.setChecked(false);
 
-//        answeredQsNo=questionId+1;
-//        tvNoOfQs.setText(+answeredQsNo+"/"+questionsList.size());
+
 
         txtQuestion.setText(currentQuestion.getQUESTION());
         rbtnA.setText(currentQuestion.getOptionA());
