@@ -11,13 +11,25 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="91dp"
+        android:layout_alignStart="@+id/txtvideo"
+        android:layout_marginTop="99dp"
         android:text="PMO Tools Manajemen"
         tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="40dp"
-        />
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/txtvideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="157dp"
+        android:text="Video"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="40dp" />
 
 
 </RelativeLayout>

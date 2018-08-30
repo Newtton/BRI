@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link QuestionFragment#newInstance} factory method to
@@ -31,10 +33,6 @@ public class QuestionFragment extends Fragment  {
     private static final String ARG_QUESTION_ID = "question_id";
     private List<Question> questionsList;
     private Question currentQuestion;
-    private int obtainedScore=0;
-    private int questionId=0;
-
-
 
     private int answeredQsNo=0;
 
@@ -74,41 +72,39 @@ public class QuestionFragment extends Fragment  {
         final DBAdapter dbAdapter = new DBAdapter(getContext());
         questionsList = dbAdapter.getAllQuestions();
         currentQuestion = questionsList.get(Integer.parseInt(question1));
+        answeredQsNo=Integer.parseInt(question1)+1;
+
 
         View view = inflater.inflate(R.layout.fragment_question, container, false);
-        final RadioGroup grp=view.findViewById(R.id.radioGroup1);
 
-//        tvNumberOfQuestions = view.findViewById(R.id.tvNumberOfQuestions);
+        tvNumberOfQuestions = view.findViewById(R.id.tvNumberOfQuestions);
         txtQuestion=view.findViewById(R.id.tvQuestion);
         rbtnA=view.findViewById(R.id.radio0);
         rbtnB=view.findViewById(R.id.radio1);
         rbtnC=view.findViewById(R.id.radio2);
         rbtnD=view.findViewById(R.id.radio3);
 
-
-        final RadioButton answer=(RadioButton)view.findViewById(grp.getCheckedRadioButtonId());
         //set Question dan check RadioGruop
         setPertanyaan();
-        grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        RadioGroup radioGroup=view.findViewById(R.id.radioGroup1);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // checkedId is the RadioButton selected
-                    
-                    if (checkedId == R.id.radio0) {
-                        mCallback.onButtonSelected(0);
+                RadioButton radioButton = group.findViewById(checkedId);
+                mCallback.onButtonSelected(String.valueOf(radioButton.getText()));
+                if(currentQuestion.getANSWER().equals(radioButton.getText())){
+                    MainActivity.obtainedScore++;
+                    Log.e("comments", String.valueOf(MainActivity.obtainedScore));
+                }else{
+                    Log.e("comments", "Wrong Answer");
+                }
 
-                    } else if (checkedId == R.id.radio1) {
-                        mCallback.onButtonSelected(1);
-
-                    } else if (checkedId == R.id.radio2) {
-                        mCallback.onButtonSelected(2);
-
-                    } else if (checkedId == R.id.radio3) {
-                        mCallback.onButtonSelected(3);
-
-                    }
             }
+
+
+
         });
+
 
 
         return view;
@@ -121,7 +117,7 @@ public class QuestionFragment extends Fragment  {
 //        rbtnD.setChecked(false);
 
 
-
+        tvNumberOfQuestions.setText(+answeredQsNo+"/"+questionsList.size());
         txtQuestion.setText(currentQuestion.getQUESTION());
         rbtnA.setText(currentQuestion.getOptionA());
         rbtnB.setText(currentQuestion.getOptionB());
@@ -152,7 +148,7 @@ public class QuestionFragment extends Fragment  {
     }
 
     public interface OnRadioGroupSelectedListener {
-        public void onButtonSelected(int position);
+        public void onButtonSelected(String Value);
 
     }
 }

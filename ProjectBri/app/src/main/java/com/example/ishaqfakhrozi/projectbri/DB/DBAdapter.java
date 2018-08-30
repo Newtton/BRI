@@ -102,34 +102,34 @@ public class DBAdapter extends SQLiteOpenHelper {
     {
         //format is question-option1-option2-option3-option4-answer
 
-        Question q1=new Question("1.Whis is Internet Protocol","TCP/IP", "UDP", "NetBIEU", "Arpanet","TCP/IP");
+        Question q1=new Question("Whis is Internet Protocol","TCP/IP", "UDP", "NetBIEU", "Arpanet","TCP/IP");
         this.addQuestion(q1);
 
-        Question q2=new Question("2.IP is","Internet Program ", "Internet Protocol", "Intranet Protocol", "Internet Policy ","Internet Protocol");
+        Question q2=new Question("IP is","Internet Program ", "Internet Protocol", "Intranet Protocol", "Internet Policy ","Internet Protocol");
         this.addQuestion(q2);
 
-        Question q3=new Question("3.TCP is ","Technology Control Policy", "Transmission Control Protocol", "Transfer Currency Identity Policy ", "Term of Internet Protocol","Transmission Control Protocol");
+        Question q3=new Question("TCP is ","Technology Control Policy", "Transmission Control Protocol", "Transfer Currency Identity Policy ", "Term of Internet Protocol","Transmission Control Protocol");
         this.addQuestion(q3);
 
-        Question q4=new Question("4.VOIP is ","Voice Over Internet Protocol", "Voice of Internet Program", "Voice Over Intranet Protocol", "Voice on Internet Protocol","Voice Over Internet Protocol");
+        Question q4=new Question("VOIP is ","Voice Over Internet Protocol", "Voice of Internet Program", "Voice Over Intranet Protocol", "Voice on Internet Protocol","Voice Over Internet Protocol");
         this.addQuestion(q4);
 
-        Question q5=new Question("5.LAN is ","Local Area Connection", "Landline Area Network", "Land Area Networking", "Link Access Network","Local Area Connection");
+        Question q5=new Question("LAN is ","Local Area Connection", "Landline Area Network", "Land Area Networking", "Link Access Network","Local Area Connection");
         this.addQuestion(q5);
 
-        Question q6=new Question("6.HP is ","Handphone", "Popong", "Hepong", "Hanpong","Handphone");
+        Question q6=new Question("HP is ","Handphone", "Popong", "Hepong", "Hanpong","Handphone");
         this.addQuestion(q6);
 
-        Question q7=new Question("7.a ","a", "b", "c", "d","a");
+        Question q7=new Question("a ","a", "b", "c", "d","a");
         this.addQuestion(q7);
 
-        Question q8=new Question("8.b ","a", "b", "c", "d","b");
+        Question q8=new Question("b ","a", "b", "c", "d","b");
         this.addQuestion(q8);
 
-        Question q9=new Question("9.d ","a", "b", "c", "d","d");
+        Question q9=new Question("d ","a", "b", "c", "d","d");
         this.addQuestion(q9);
 
-        Question q10=new Question("10.c ","a", "b", "c", "d","c");
+        Question q10=new Question("c ","a", "b", "c", "d","c");
         this.addQuestion(q10);
 
 
