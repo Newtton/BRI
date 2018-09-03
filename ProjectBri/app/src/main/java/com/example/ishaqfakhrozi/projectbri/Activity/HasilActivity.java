@@ -49,5 +49,6 @@ public class HasilActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }

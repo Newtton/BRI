@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_centerVertical="true"
+    android:paddingLeft="@dimen/treeview_left_padding"
+    android:paddingRight="@dimen/treeview_right_padding"
+    android:paddingTop="@dimen/treeview_top_padding"
+    android:paddingBottom="@dimen/treeview_bottom_padding">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_folder" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/image"
+        android:text="List Item"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/txtvideo"
+        android:layout_marginTop="99dp"
+        android:text="PMO Tools Manajemen"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/txtvideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="157dp"
+        android:text="Video"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+
+</RelativeLayout>

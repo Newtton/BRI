@@ -29,7 +29,9 @@
         </activity>
         <activity android:name=".Activity.HasilActivity" />
         <activity android:name=".Activity.VideoActivity" />
-        <activity android:name=".Activity.ListView"></activity>
+        <activity android:name=".Activity.ListView">
+
+        </activity>
     </application>
 
 </manifest>

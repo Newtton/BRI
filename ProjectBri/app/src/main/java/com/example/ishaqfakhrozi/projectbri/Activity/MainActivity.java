@@ -74,7 +74,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
 
 
             } else if (view == next) {
-                if (mfragmentIndex==11){
+                if (mfragmentIndex==10){
                     Intent intent = new Intent(this, HasilActivity.class);
                     intent.putExtra("score",obtainedScore);
                     intent.putExtra("total",questionsList.size());
